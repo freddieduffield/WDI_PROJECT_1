@@ -1,3 +1,70 @@
-body {
-  background-color: antiqueWhite;
+* {
+  box-sizing: border-box;
+}
+
+.playerOne {
+  float: left;
+  width: 48%;
+  height: 550px;
+  background-color: blue;
+  border: 30px 20px 5px;
+  position: relative;
+}
+
+.cpuPlayer {
+float: right;
+width: 48%;
+height: 550px;
+background-color: red;
+position: relative;
+}
+
+.container {
+  width: 80%;
+  background-color: pink;
+  margin: 0 auto;
+  height: 550px;
+
+}
+.powerups{
+  margin: 5px;
+  position: absolute;
+  display:block;
+  bottom: 0;
+  width: 550px
+  text-align: center;
+}
+header {
+  width: 80%;
+  height: 100px;
+  border: 30px;
+}
+.healthBarBox {
+  height: 40px;
+  width: 40px;
+  border: 3px;
+  margin: 10px;
+  display: inline-block;
+  background-color: purple;
+}
+  .powerupBox {
+    width: 80px;
+    height: 80px;
+    vertical-align: top;
+    display: inline-block;
+    *display: inline;
+    border: 3px solid gold;
+    margin: 7px 7px;
+  }
+  .right {
+    float: right;
+  }
+  .left {
+    float:left;
+    }
+.character{
+  text-align: center;
+  width: 40px;
+  height 40px;
+  background-color: cornsilk;
 }
