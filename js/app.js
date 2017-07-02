@@ -1,23 +1,9 @@
 console.log('hello fred');
 
-
-// DOM UP-IN-ERE - LISTENING EVENTS ON BUTTONS
-// START BUTTON
-// on click run question GENERATOR
-
-// QUESTION GENERATOR
-// some kinda loop? to make inputs taken from variable defined outside
-// animated pop options
-// on click run COUNTER
-
-//COUNTER
-// for A add 1 / for B add 5 / for C add 10
-
-// INTERVAl
-// after 3 seconds and sprite animation run question Generator
-
-
-// EVALUATION LOGIC
-// madness? make the result complete random ?
-// if score < number run whatever conclusion
-// if score > number run
+// An object containing items
+// a random generator of objects
+// a click event generates a random selector of computers object
+// the 2 objects in play are evaluated
+// the evaluation effects the life and power bars
+// the game ends when one player life bar(-3) is empty or the other players power bar(3) is full
+ 
