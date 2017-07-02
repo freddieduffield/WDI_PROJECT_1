@@ -5,7 +5,7 @@
 .playerOne {
   float: left;
   width: 48%;
-  height: 550px;
+  height: 600px;
   background-color: blue;
   border: 30px 20px 5px;
   position: relative;
@@ -14,7 +14,7 @@
 .cpuPlayer {
 float: right;
 width: 48%;
-height: 550px;
+height: 600px;
 background-color: red;
 position: relative;
 }
@@ -23,7 +23,7 @@ position: relative;
   width: 80%;
   background-color: pink;
   margin: 0 auto;
-  height: 550px;
+  height: 600px;
 
 }
 .powerups{
@@ -70,5 +70,12 @@ header {
 }
 
 button {
+}
 
+.powerBar{
+  width: 300px;
+  height: 20px;
+  margin: 10px;
+  border: 3px solid orange;
+  position: relative;
 }
