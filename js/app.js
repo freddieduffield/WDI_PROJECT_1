@@ -18,105 +18,39 @@ const moves = [
   {
     image: 'water.png'
   }
-]
-
-// An object containing items
-// a random generator of objects
-// a click event generates a random selector of computers object
-// the 2 objects in play are evaluated
-// the evaluation effects the life and power bars
-// the game ends when one player life bar(-3) is empty or the other players power bar(3) is full
-const $powerupBox = $('.powerupBox');
-// console.log($powerupBox);
-
-// item Objects
-const mushroom = ['img/mushroom.png']
-  // fertileMushroom: function() {
-  //   console.log('Fertile mushroom');
-  // },
-  // chickenMushroomPie: function () {
-  //   console.log('yummy');
-  // },
-  // magicMushroom: function(){
-  //   console.log('trippin\' balls');
-  // }
-;
-
-const fire = ['img/fire.png']
-  // burntMushroom: function(){
-  //   // some kinda thing that effects the power bar
-  //   console.log('disgusting!!');
-  // },
-  // toxicFire: function(){
-  //   // some kinda thing that effects the power bar
-  //   console.log('Gas');
-  // },
-  // gettingHotInEre: function(){
-  //   //   // something that fills both powerbars
-  //   console.log('so take off all your clothes');
-  // }
-;
-
-const water = ['img/water.png']
-  // extinguish: function(){
-  //   console.log('lights out');
-  // },
-  // soggyChicken: function(){
-  //   console.log('fowl!!');
-  // },
-  // lifeOLife: function(){
-  //   console.log('too much chicken');
-  // }
-;
-const chicken = ['img/chicken.png']
-  // roastChicken: function(){
-  //   console.log('roastin\'');
-  // },
-  // perfectCombo: function(){
-  //   console.log('Eden\'s cottage');
-  // },
-  // barginBucket: function(){
-  //   console.log('too much chicken');
-  // }
-;
-
-const beer = ['img/beer.png']
-  // needPiss: function(){},
-  // theFamousOne: function(){},
-  // highAsAKite: function(){}
-;
-
-const syringe = ['img/syringe.png']
-
-  // posionMushroom: function(){},
-  // posionWater: function(){},
-  // hormoneChicken: function(){}
-;
-
-
-
-// object in array
-const items = [chicken, mushroom, beer, syringe, fire, water];
-
-//Start button
-// function createStartButton (i) {
-// // document.newButton = $('<button/>');
-// // return this.newButton;
-// // on click run itemDistributor fuction
-// // for both computer and human
-// }
+];
 
 $(init);
 function init(){
-  $powerupBox.append(itemDistributor());
-}
-//item distributor
-// a random generator of objects
-function itemDistributor(){
-  $.each($('.powerupBox'), function(index, element) {
-    const randomMove = moves[Math.floor(Math.random()*moves.length)];
-    $(element).css('background', `url(img/${randomMove.image})`);
+  function createStartButton(){
+    const $input = $('<input type="button" value="START" />');
+    $input.appendTo($('.endgame'));
+    $input.on('click', function(){
+      itemDistributor();
+      $input.remove();
+    });
+  }
+  createStartButton();
+
+
+
+  function itemDistributor(){
+    $.each($('.powerupBox'), function(index, element) {
+      const randomMove = moves[Math.floor(Math.random()* moves.length)];
+      $(element).css('background', `url(img/${randomMove.image})`);
+    });
+  }
+  $('.powerupBox').on('click', function() {
+    console.log($(this).attr('set id'));
   });
+}
+
+
+
+
+
+
+
 
 
   // for (var i = 0; i < $('.powerupBox').length; i++) {
@@ -128,10 +62,19 @@ function itemDistributor(){
   // console.log(randomSelectionOfItems);
   // $('.powerupBox').append(randomSelectionOfItems);
   // console.log(randomSelectionOfItems);
-}
+
 
 
 // $('.powerupBox').on('click', function (){});
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// An object containing items
+// a random generator of objects
+// a click event generates a random selector of computers object
+// the 2 objects in play are evaluated
+// the evaluation effects the life and power bars
+// the game ends when one player life bar(-3) is empty or the other players power bar(3) is full
 
 // winConditionsOnePlayer
 // fireWins
@@ -207,3 +150,68 @@ function itemDistributor(){
 // both loose
 
 //
+
+
+// // item Objects
+// const mushroom = ['img/mushroom.png']
+//   // fertileMushroom: function() {
+//   //   console.log('Fertile mushroom');
+//   // },
+//   // chickenMushroomPie: function () {
+//   //   console.log('yummy');
+//   // },
+//   // magicMushroom: function(){
+//   //   console.log('trippin\' balls');
+//   // }
+// ;
+//
+// const fire = ['img/fire.png']
+//   // burntMushroom: function(){
+//   //   // some kinda thing that effects the power bar
+//   //   console.log('disgusting!!');
+//   // },
+//   // toxicFire: function(){
+//   //   // some kinda thing that effects the power bar
+//   //   console.log('Gas');
+//   // },
+//   // gettingHotInEre: function(){
+//   //   //   // something that fills both powerbars
+//   //   console.log('so take off all your clothes');
+//   // }
+// ;
+//
+// const water = ['img/water.png']
+//   // extinguish: function(){
+//   //   console.log('lights out');
+//   // },
+//   // soggyChicken: function(){
+//   //   console.log('fowl!!');
+//   // },
+//   // lifeOLife: function(){
+//   //   console.log('too much chicken');
+//   // }
+// ;
+// const chicken = ['img/chicken.png']
+//   // roastChicken: function(){
+//   //   console.log('roastin\'');
+//   // },
+//   // perfectCombo: function(){
+//   //   console.log('Eden\'s cottage');
+//   // },
+//   // barginBucket: function(){
+//   //   console.log('too much chicken');
+//   // }
+// ;
+//
+// const beer = ['img/beer.png']
+//   // needPiss: function(){},
+//   // theFamousOne: function(){},
+//   // highAsAKite: function(){}
+// ;
+//
+// // const syringe = ['img/syringe.png']
+//
+//   // posionMushroom: function(){},
+//   // posionWater: function(){},
+//   // hormoneChicken: function(){}
+// ;
