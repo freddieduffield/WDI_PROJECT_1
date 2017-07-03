@@ -1,4 +1,24 @@
 
+const moves = [
+  {
+    image: 'beer.png'
+  },
+  {
+    image: 'chicken.png'
+  },
+  {
+    image: 'fire.png'
+  },
+  {
+    image: 'mushroom.png'
+  },
+  {
+    image: 'syringe.png'
+  },
+  {
+    image: 'water.png'
+  }
+]
 
 // An object containing items
 // a random generator of objects
@@ -6,70 +26,74 @@
 // the 2 objects in play are evaluated
 // the evaluation effects the life and power bars
 // the game ends when one player life bar(-3) is empty or the other players power bar(3) is full
-
+const $powerupBox = $('.powerupBox');
+// console.log($powerupBox);
 
 // item Objects
-const mushroom = {
-  fertileMushroom: function() {
-    console.log('Fertile mushroom');
-  },
-  chickenMushroomPie: function () {
-    console.log('yummy');
-  },
-  magicMushroom: function(){
-    console.log('trippin\' balls');
-  }
-};
+const mushroom = ['img/mushroom.png']
+  // fertileMushroom: function() {
+  //   console.log('Fertile mushroom');
+  // },
+  // chickenMushroomPie: function () {
+  //   console.log('yummy');
+  // },
+  // magicMushroom: function(){
+  //   console.log('trippin\' balls');
+  // }
+;
 
-const fire = {
-  burntMushroom: function(){
-    // some kinda thing that effects the power bar
-    console.log('disgusting!!');
-  },
-  toxicFire: function(){
-    // some kinda thing that effects the power bar
-    console.log('Gas');
-  },
-  gettingHotInEre: function(){
-    //   // something that fills both powerbars
-    console.log('so take off all your clothes');
-  }
-};
+const fire = ['img/fire.png']
+  // burntMushroom: function(){
+  //   // some kinda thing that effects the power bar
+  //   console.log('disgusting!!');
+  // },
+  // toxicFire: function(){
+  //   // some kinda thing that effects the power bar
+  //   console.log('Gas');
+  // },
+  // gettingHotInEre: function(){
+  //   //   // something that fills both powerbars
+  //   console.log('so take off all your clothes');
+  // }
+;
 
-const water = {
-  extinguish: function(){
-    console.log('lights out');
-  },
-  soggyChicken: function(){
-    console.log('fowl!!');
-  },
-  lifeOLife: function(){
-    console.log('too much chicken');
-  }
-};
-const chicken = {
-  roastChicken: function(){
-    console.log('roastin\'');
-  },
-  perfectCombo: function(){
-    console.log('Eden\'s cottage');
-  },
-  barginBucket: function(){
-    console.log('too much chicken');
-  }
-};
+const water = ['img/water.png']
+  // extinguish: function(){
+  //   console.log('lights out');
+  // },
+  // soggyChicken: function(){
+  //   console.log('fowl!!');
+  // },
+  // lifeOLife: function(){
+  //   console.log('too much chicken');
+  // }
+;
+const chicken = ['img/chicken.png']
+  // roastChicken: function(){
+  //   console.log('roastin\'');
+  // },
+  // perfectCombo: function(){
+  //   console.log('Eden\'s cottage');
+  // },
+  // barginBucket: function(){
+  //   console.log('too much chicken');
+  // }
+;
 
-const beer = {
-  needPiss: function(){},
-  theFamousOne: function(){},
-  highAsAKite: function(){}
-};
+const beer = ['img/beer.png']
+  // needPiss: function(){},
+  // theFamousOne: function(){},
+  // highAsAKite: function(){}
+;
 
-const syringe = {
-  posionMushroom: function(){},
-  posionWater: function(){},
-  hormoneChicken: function(){}
-};
+const syringe = ['img/syringe.png']
+
+  // posionMushroom: function(){},
+  // posionWater: function(){},
+  // hormoneChicken: function(){}
+;
+
+
 
 // object in array
 const items = [chicken, mushroom, beer, syringe, fire, water];
@@ -84,16 +108,22 @@ const items = [chicken, mushroom, beer, syringe, fire, water];
 
 $(init);
 function init(){
-  $('.powerupBox').each(itemDistributor());
+  $powerupBox.append(itemDistributor());
 }
 //item distributor
 // a random generator of objects
 function itemDistributor(){
-  for (var i = 0; i < items.length; i++) {
-    const randomSelectionOfItems =  items[Math.floor(Math.random()*items.length)];
-    console.log(randomSelectionOfItems);
-  $('.powerupBox').attr('src','second.jpg')
-  }
+  $.each($('.powerupBox'), function(index, element) {
+    const randomMove = moves[Math.floor(Math.random()*moves.length)];
+    $(element).css('background', `url(img/${randomMove.image})`);
+  });
+
+
+  // for (var i = 0; i < $('.powerupBox').length; i++) {
+  //   // const randomSelectionOfItems =  items[Math.floor(Math.random()*items.length)];
+  //   // console.log(moves[i].image);
+  //   $('.powerupBox').css('background-image', `../img/${moves[i].image}`);
+  // }
   // const randomSelectionOfItems = items[Math.floor(Math.random()*items.length)];
   // console.log(randomSelectionOfItems);
   // $('.powerupBox').append(randomSelectionOfItems);
