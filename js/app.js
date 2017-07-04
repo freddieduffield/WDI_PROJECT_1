@@ -1,22 +1,28 @@
 
 const moves = [
   {
-    image: 'beer.png'
+    image: 'beer.png',
+    name: 'beer'
   },
   {
-    image: 'chicken.png'
+    image: 'chicken.png',
+    name: 'chicken'
   },
   {
-    image: 'fire.png'
+    image: 'fire.png',
+    name: 'fire'
   },
   {
-    image: 'mushroom.png'
+    image: 'mushroom.png',
+    name: 'mushroom'
   },
   {
-    image: 'syringe.png'
+    image: 'syringe.png',
+    name: 'syringe'
   },
   {
-    image: 'water.png'
+    image: 'water.png',
+    name: 'water'
   }
 ];
 
@@ -32,21 +38,40 @@ function init(){
   }
   createStartButton();
 
-
-
   function itemDistributor(){
     $.each($('.powerupBox'), function(index, element) {
       const randomMove = moves[Math.floor(Math.random()* moves.length)];
-      $(element).css('background', `url(img/${randomMove.image})`);
+      $(element).css('background', `url(img/${randomMove.image})`).attr('id', `${randomMove.name}`);
     });
   }
-  $('.powerupBox').on('click', function() {
-    console.log($(this).attr('set id'));
+  $('.powerupBox').on('click', function(e) {
+    // console.log($(this).attr('id'));
+    const $enemyArray = $('.enemyArray').toArray();
+    console.log($enemyArray);
+    const cpuMove = $enemyArray[Math.floor(Math.random()* $enemyArray.length)];
+    console.log(cpuMove);
+    // console.log(e.target);
+    $('.character').append(e.target).clone();
+    const playaOneMove =  e.target;
+    console.log(playaOneMove);
+    // console.log(playaOneMove.id);
+    $('.character2').append(cpuMove).clone();
+
   });
+
+
+
+
 }
 
 
 
+// var cardElement = document.createElement('img');
+// cardElement.setAttribute('src', 'images/back.png');
+// cardElement.setAttribute('data-id', i);
+//
+// cardElement.addEventListener('click', flipCard);
+// document.getElementById('game-board').appendChild(cardElement);
 
 
 

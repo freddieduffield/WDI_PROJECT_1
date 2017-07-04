@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+.containMe,.character,.character2,.powerupBox{
+  background-size: contain !important;
+}
+
 .playerOne {
   float: left;
   width: 48%;
@@ -57,7 +61,6 @@ header {
   display: inline-block;
   margin: 7px 7px;
   padding: 20px;
-  background-size: contain !important;
 }
 
 .right {
@@ -69,10 +72,25 @@ header {
 }
 
 .character{
+  margin: 0 auto;
   text-align: center;
-  width: 40px;
-  height 40px;
+  width: 150px;
+  height: 150px;
   background-color: cornsilk;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.character2{
+  margin: 0 auto;
+  text-align: center;
+  width: 150px;
+  height: 150px;
+  background-color: goldenrod;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .powerBar{
@@ -90,4 +108,7 @@ input{
   color: #C3B299;
   margin: 200px;
   position: absolute;
+}
+div.powerupBox{
+  cursor: pointer;
 }
