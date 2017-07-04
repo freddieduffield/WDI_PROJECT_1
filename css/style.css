@@ -28,6 +28,7 @@
   background-color: #C3B299;
   margin: 0 auto;
   height: 600px;
+  
 
 }
 .powerups{
@@ -94,13 +95,23 @@ header {
 }
 
 .powerBar{
-  transition: 0.5s ease-in-out;
+
   width: 300px;
   height: 20px;
   margin: 10px;
   border: 3px solid #C3B299;
   position: relative;
 }
+
+.bar {
+background: goldenrod;
+width: 20%;
+height: 14px;
+position: relative;
+
+transition: width .5s linear;
+}
+
 input{
   height:100px;
   width:200px;
