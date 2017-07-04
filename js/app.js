@@ -2,27 +2,83 @@
 const moves = [
   {
     image: 'beer.png',
-    name: 'beer'
+    name: 'beer',
+    needPiss: function(){
+      console.log('move!');
+    },
+    theFamousOne: function(){
+      console.log('the famous one');
+    },
+    highAsAKite: function(){
+      console.log('feeling dizzy');
+    }
   },
+
   {
     image: 'chicken.png',
-    name: 'chicken'
+    name: 'chicken',
+    barginBucket: function(){
+      console.log('too much chicken');
+    },
+    roastChicken: function(){
+      console.log('roastin\'');
+    },
+    perfectCombo: function(){
+      console.log('Eden\'s cottage');
+    }
   },
+
   {
     image: 'fire.png',
-    name: 'fire'
+    name: 'fire',
+    burntMushroom: function(){
+      console.log('disgusting!!');
+    },
+    toxicFire: function(){
+      console.log('Gas');
+    },
+    gettingHotInEre: function(){
+      console.log('so take off all your clothes');
+    }
   },
   {
     image: 'mushroom.png',
-    name: 'mushroom'
+    name: 'mushroom',
+    fertileMushroom: function() {
+      console.log('Fertile mushroom');
+    },
+    chickenMushroomPie: function () {
+      console.log('yummy');
+    },
+    magicMushroom: function(){
+      console.log('trippin\' balls');
+    }
   },
   {
     image: 'syringe.png',
-    name: 'syringe'
+    name: 'syringe',
+    posionMushroom: function(){
+      console.log('yuk');
+    },
+    posionWater: function(){
+      console.log('baaa');
+    },
+    hormoneChicken: function(){
+      console.log('tasty but deadly');
+    }
   },
   {
     image: 'water.png',
-    name: 'water'
+    name: 'water',
+    extinguish: function(){
+      console.log('lights out');
+    },
+    soggyChicken: function(){
+      console.log('fowl!!');
+    },
+    lifeOLife: function(){
+      console.log('too much chicken');
+    }
   }
 ];
 
@@ -45,17 +101,46 @@ function init(){
     });
   }
   $('.powerupBox').on('click', function(e) {
-    // console.log($(this).attr('id'));
     const $enemyArray = $('.enemyArray').toArray();
-    console.log($enemyArray);
     const cpuMove = $enemyArray[Math.floor(Math.random()* $enemyArray.length)];
-    console.log(cpuMove);
-    // console.log(e.target);
-    $('.character').append(e.target).clone();
-    const playaOneMove =  e.target;
-    console.log(playaOneMove);
-    // console.log(playaOneMove.id);
     $('.character2').append(cpuMove).clone();
+
+
+    $('.character').append(e.target).clone();
+    // const playaOneMove =  e.target;
+    // console.log(playaOneMove);
+    const humanSelection = $('div.character > div')[0].id;
+    const cpuSelection = $('div.character2 > div')[0].id;
+
+
+
+    if (humanSelection === 'chicken' && cpuSelection === 'beer') {
+        moves[1].barginBucket();
+    }else{
+      console.log('false');
+    }
+
+
+
+
+    // letsPlay();
+    // function letsPlay(){
+    // if  (($( 'div.character > div') === $('div.character2  > div')) && ($( 'div.character > div') === $('#beer'))) {
+    //   console.log('beer');
+    // } else if (($( 'div.character > div') === $('div.character2  > div')) && ($( 'div.character > div') === $('#water'))) {
+    //   console.log('water of life');
+    // }else if (($( 'div.character > div') === $('div.character2  > div')) && ($( 'div.character > div') === $('#fire'))){
+    //   console.log('burn baby burn');
+    // }else if (($( 'div.character > div') === $('div.character2  > div')) && ($( 'div.character > div') === $('#mushroom'))) {
+    //   console.log('just ta get high');
+    // }else if (($( 'div.character > div') === $('div.character2  > div')) && ($( 'div.character > div') === $('#syringe'))){
+    //   console.log('intravenuous ');
+    // }else if (($( 'div.character > div') === $('div.character2  > div')) && ($( 'div.character > div') === $('#chicken'))){
+    //   console.log('two on them');
+    // }else{
+    //   console.log('no match');
+    // }
+    // }
 
   });
 
@@ -179,42 +264,26 @@ function init(){
 
 // // item Objects
 // const mushroom = ['img/mushroom.png']
-//   // fertileMushroom: function() {
-//   //   console.log('Fertile mushroom');
-//   // },
-//   // chickenMushroomPie: function () {
-//   //   console.log('yummy');
-//   // },
-//   // magicMushroom: function(){
-//   //   console.log('trippin\' balls');
-//   // }
+
 // ;
 //
 // const fire = ['img/fire.png']
-//   // burntMushroom: function(){
-//   //   // some kinda thing that effects the power bar
-//   //   console.log('disgusting!!');
-//   // },
-//   // toxicFire: function(){
-//   //   // some kinda thing that effects the power bar
-//   //   console.log('Gas');
-//   // },
-//   // gettingHotInEre: function(){
-//   //   //   // something that fills both powerbars
-//   //   console.log('so take off all your clothes');
-//   // }
+  // burntMushroom: function(){
+  //   // some kinda thing that effects the power bar
+  //   console.log('disgusting!!');
+  // },
+  // toxicFire: function(){
+  //   // some kinda thing that effects the power bar
+  //   console.log('Gas');
+  // },
+  // gettingHotInEre: function(){
+  //   //   // something that fills both powerbars
+  //   console.log('so take off all your clothes');
+  // }
 // ;
 //
 // const water = ['img/water.png']
-//   // extinguish: function(){
-//   //   console.log('lights out');
-//   // },
-//   // soggyChicken: function(){
-//   //   console.log('fowl!!');
-//   // },
-//   // lifeOLife: function(){
-//   //   console.log('too much chicken');
-//   // }
+
 // ;
 // const chicken = ['img/chicken.png']
 //   // roastChicken: function(){
@@ -229,14 +298,10 @@ function init(){
 // ;
 //
 // const beer = ['img/beer.png']
-//   // needPiss: function(){},
-//   // theFamousOne: function(){},
-//   // highAsAKite: function(){}
+
 // ;
 //
 // // const syringe = ['img/syringe.png']
 //
-//   // posionMushroom: function(){},
-//   // posionWater: function(){},
-//   // hormoneChicken: function(){}
+
 // ;
