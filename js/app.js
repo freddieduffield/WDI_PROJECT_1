@@ -1,137 +1,187 @@
 $(init);
 
 function init(){
-// ITEM OBJECTS ARRAY
-const moves = [
-  {
-    image: 'beer.png',
-    name: 'beer',
-    needPiss: function(){
-      console.log('move!');
-    },
-    theFamousOne: function(){
-      console.log('the famous one');
-      increasePower();
-    },
-    highAsAKite: function(){
-      console.log('feeling dizzy');
-      increasePower();
-    },
-    megaPissed: function(){
-      console.log('blindo');
-      increasePower();
-    }
-  },
-  {
-    image: 'chicken.png',
-    name: 'chicken',
-    barginBucket: function(){
-      console.log('finger lick\' food');
-      increasePower();
-    },
-    roastChicken: function(){
-      console.log('roastin\'');
-    },
-    perfectCombo: function(){
-      console.log('Eden\'s cottage');
-      increasePower();
-    }
-  },
-  {
-    image: 'fire.png',
-    name: 'fire',
-    burntMushroom: function(){
-      console.log('disgusting!!');
-    },
-    toxicFire: function(){
-      console.log('Gas');
-    },
-    gettingHotInEre: function(){
-      console.log('so take off all your clothes');
-      increasePower();
-    }
-  },
-  {
-    image: 'mushroom.png',
-    name: 'mushroom',
-    fertileMushroom: function() {
-      console.log('Fertile mushroom');
-      increasePower();
-    },
-    chickenMushroomPie: function () {
-      console.log('yummy');
-      increasePower();
-    },
-    magicMushroom: function(){
-      console.log('trippin\' balls');
-      increasePower();
-    },
-    festival: function(){
-      console.log('yooooo');
-      increasePower();
-    }
-  },
-  {
-    image: 'syringe.png',
-    name: 'syringe',
-    posionMushroom: function(){
-      console.log('yuk');
-      $('.container').text('')
-    },
-    posionWater: function(){
-      console.log('baaa');
-      $('.container').text('')
-    },
-    hormoneChicken: function(){
-      console.log('tasty but deadly');
-      $('.container').text('')
-    },
-    overdose: function(){
-      console.log('jim morrison');
-      $('.container').text('')
-      increasePower();
-    }
-  },
-  {
-    image: 'water.png',
-    name: 'water',
-    extinguish: function(){
-      console.log('lights out');
-    },
-    soggyChicken: function(){
-      console.log('fowl!!');
-      $('.container').text('')
-    },
-    lifeOLife: function(){
-      console.log('Des\'ree');
-      $('.container').text('')
-      increasePower();
-    }
-  }
-];
 
-// INCREASE POWER BAR function
+  function whatYaSayin(comment){
+    const newDivMessage = $('div');
+    $('.message').prepend(comment);
+    newDivMessage.css('font-size', '100px', 'cursor', 'pointer');
+    $('.powerupBox').hide();
+
+    $('.container').on('click', function(){
+      console.log('clicked');
+      // $('.character').prop('onclick',null).off('click');
+      // $('.powerupBox').show();
+    });
+    // remove text
+    // return to game board
+  }
+  // ITEM OBJECTS ARRAY
+  const moves = [
+    {
+      image: 'beer.png',
+      name: 'beer',
+      needPiss: function(){
+        // hopefully a count down
+        const piss = 'Need a piss!!! move!';
+        whatYaSayin(piss);
+      },
+      theFamousOne: function(){
+        const famous = 'the famous one';
+        increasePower();
+        return whatYaSayin(famous);
+      },
+      highAsAKite: function(){
+        const high = 'High as a mutha-ffin kite... ';
+        increasePower();
+        whatYaSayin(high);
+      },
+      megaPissed: function(){
+        const blindo = 'Friday night... empty stomoch... blindo drunk';
+        increasePower();
+        whatYaSayin(blindo);
+      }
+    },
+    {
+      image: 'chicken.png',
+      name: 'chicken',
+      barginBucket: function(){
+        const bargin = 'finger lick\' food';
+        increasePower();
+        whatYaSayin(bargin);
+      },
+      roastChicken: function(){
+        const roast ='roastin\'';
+        whatYaSayin(roast)
+      },
+      perfectCombo: function(){
+        const kfc ='Eden\'s cottage .. PFC .. Chicken cottage';
+        increasePower();
+        whatYaSayin(kfc);
+      }
+    },
+    {
+      image: 'fire.png',
+      name: 'fire',
+      burntMushroom: function(){
+        const grees = 'burnt mushroom greasy spoon!!';
+        whatYaSayin(grees);
+      },
+      toxicFire: function(){
+        const toxic = 'toxic fire!!';
+        whatYaSayin(toxic);
+      },
+      gettingHotInEre: function(){
+        const get = 'Its getting hot in ere ! so take off all your clothes';
+        increasePower();
+        whatYaSayin(get);
+      }
+    },
+    {
+      image: 'mushroom.png',
+      name: 'mushroom',
+      fertileMushroom: function() {
+        const fertile = 'Fertile mushroom';
+        increasePower();
+        whatYaSayin(fertile);
+      },
+      chickenMushroomPie: function () {
+        const pukka = 'chicken and mushroom pie .. pukka';
+        increasePower();
+        whatYaSayin();
+      },
+      magicMushroom: function(){
+        const magic = 'trippin\' balls';
+        increasePower();
+        whatYaSayin(magic);
+      },
+      festival: function(){
+        const shroom = 'shroom hop cocktail';
+        increasePower();
+        whatYaSayin(shroom);
+      }
+    },
+    {
+      image: 'syringe.png',
+      name: 'syringe',
+      posionMushroom: function(){
+        const posion ='gastrointestinal discomfort to death';
+        whatYaSayin(posion);
+      },
+      posionWater: function(){
+        const spike ='spiking the water supply';
+        whatYaSayin(spike);
+      },
+      hormoneChicken: function(){
+        const mone ='tasty but deadly';
+        whatYaSayin(mone);
+      },
+      overdose: function(){
+        const od ='jim morrison';
+        whatYaSayin(od);
+        increasePower();
+      }
+    },
+    {
+      image: 'water.png',
+      name: 'water',
+      extinguish: function(){
+        const waterworks = 'lights out children';
+        whatYaSayin(waterworks);
+      },
+      soggyChicken: function(){
+        const soggy = 'soggy chicke - fowl!!';
+        whatYaSayin(soggy);
+      },
+      lifeOLife: function(){
+        const life = 'life o life o liiiife';
+        whatYaSayin(life);
+        increasePower();
+      }
+    }
+  ];
+
+
+
+  // INCREASE POWER BAR function
   const hBar      = $('.powerBar');
   const bar       = $('.bar');
   const manPower  = $('#humanPower');
   const cpuPower  = $('#cpuPower');
 
-function increasePower(){
-  var total = hBar.data('total');
-  var value = hBar.data('value');
-  var power = 10;
-  var newValue = +value + +power  ;
-  var barWidth = (newValue / total) * 100;
-  hBar.data('value', newValue);
-  setTimeout(function(){
-    manPower.css('width', barWidth + '%');
-  }, 500);
-  console.log(newValue, power, barWidth);
-}
+  function increasePower(){
+    var total = hBar.data('total');
+    var value = hBar.data('value');
+    var power = 10;
+    var newValue = +value + +power  ;
+    var barWidth = (newValue / total) * 100;
+    hBar.data('value', newValue);
+    setTimeout(function(){
+      manPower.css('width', barWidth + '%');
+    }, 500);
+    console.log(newValue, power, barWidth);
+    if(barWidth === 100){
+      $('.character').prepend('You win muthafucker');
+      newDivMessage.css('font-size', '100px');
+    }
+  }
 
-
-
-
+  function increasePower(){
+    var total = hBar.data('total');
+    var value = hBar.data('value');
+    var power = 10;
+    var newValue = +value + +power  ;
+    var barWidth = (newValue / total) * 100;
+    hBar.data('value', newValue);
+    setTimeout(function(){
+      manPower.css('width', barWidth + '%');
+    }, 500);
+    console.log(newValue, power, barWidth);
+    if(barWidth === 100){
+      $('.character').prepend('You win muthafucker');
+      newDivMessage.css('font-size', '100px');
+    }
+  }
 
   // START BUTTON
   function createStartButton(){
@@ -143,7 +193,7 @@ function increasePower(){
     });
   }
   createStartButton();
-// RANDOM ITEM DISTRIBUTOR
+  // RANDOM ITEM DISTRIBUTOR
   function itemDistributor(){
     $.each($('.powerupBox'), function(index, element) {
       const randomMove = moves[Math.floor(Math.random()* moves.length)];
@@ -157,82 +207,83 @@ function increasePower(){
     $('.character2').append(cpuMove).clone();
     $('.character').append(e.target).clone();
 
-// COMPARISION IF ELSE STATEMENT
+    // COMPARISION IF ELSE STATEMENT
     const humanSelection = $('div.character > div')[0].id;
     const cpuSelection = $('div.character2 > div')[0].id;
     if (humanSelection === 'chicken'){
       switch (cpuSelection) {
         case 'chicken':
-          moves[1].barginBucket();
-          break;
+        moves[1].barginBucket();
+        break;
         case 'beer':
-          moves[1].perfectCombo();
-          break;
+        moves[1].perfectCombo();
+        break;
         case 'mushroom':
-          moves[3].chickenMushroomPie();
-          break;
+        moves[3].chickenMushroomPie();
+        break;
         case 'syringe':
-          moves[4].hormoneChicken();
-          break;
+        moves[4].hormoneChicken();
+        break;
         case 'water':
-          moves[5].soggyChicken();
+        moves[5].soggyChicken();
       }
     } else if (humanSelection === 'beer') {
       switch (cpuSelection) {
         case 'water':
-          moves[0].needPiss();
-          break;
+        moves[0].needPiss();
+        break;
         case 'mushroom':
-          moves[3].festival();
-          break;
+        moves[3].festival();
+        break;
         case 'syringe':
-          moves[0].highAsAKite();
-          break;
+        moves[0].highAsAKite();
+        break;
         case 'beer':
-          moves[0].theFamousOne();
-          break;
+        moves[0].theFamousOne();
+        break;
         case 'fire':
-          moves[0].megaPissed();
+        moves[0].megaPissed();
       }
     }else if (humanSelection === 'fire'){
       switch (cpuSelection) {
         case 'water':
-          moves[5].extinguish();
-          break;
+        moves[5].extinguish();
+        break;
         case 'mushroom':
-          moves[2].burntMushroom();
-          break;
+        moves[2].burntMushroom();
+        break;
         case 'syringe':
-          moves[2].toxicFire();
-          break;
+        moves[2].toxicFire();
+        break;
         case 'chicken':
-          moves[0].roastChicken();
-          break;
+        moves[1].roastChicken();
+        break;
         case 'fire':
-          moves[2].gettingHotInEre();
+        moves[2].gettingHotInEre();
       }
     } else if (humanSelection === 'mushroom'){
       switch (cpuSelection) {
         case 'water':
-          moves[3].fertileMushroom();
-          break;
+        moves[3].fertileMushroom();
+        break;
         case 'mushroom':
-          moves[3].magicMushroom();
-          break;
+        moves[3].magicMushroom();
+        break;
         case 'syringe':
-          moves[4].posionMushroom();
+        moves[4].posionMushroom();
       }
     } else if (humanSelection === 'water') {
       switch (cpuSelection){
         case 'syringe':
-          moves[4].posionWater();
-          break;
+        moves[4].posionWater();
+        break;
         case 'water':
-          moves[5].lifeOLife();
+        moves[5].lifeOLife();
       }
     } else {
       moves[4].overdose();
     }
+
 
 
   });

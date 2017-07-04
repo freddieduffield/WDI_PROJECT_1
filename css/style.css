@@ -28,7 +28,7 @@
   background-color: #C3B299;
   margin: 0 auto;
   height: 600px;
-  
+
 
 }
 .powerups{
@@ -122,4 +122,11 @@ input{
 }
 div.powerupBox{
   cursor: pointer;
+}
+
+.message{
+  height: 800px auto;
+  width: 90%;
+  font-weight: bold;
+  z-index: -1; position:relative;
 }
