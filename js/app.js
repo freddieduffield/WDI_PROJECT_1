@@ -11,6 +11,9 @@ const moves = [
     },
     highAsAKite: function(){
       console.log('feeling dizzy');
+    },
+    megaPissed: function(){
+      console.log('blindo');
     }
   },
 
@@ -52,6 +55,9 @@ const moves = [
     },
     magicMushroom: function(){
       console.log('trippin\' balls');
+    },
+    festival: function(){
+      console.log('yooooo');
     }
   },
   {
@@ -65,6 +71,9 @@ const moves = [
     },
     hormoneChicken: function(){
       console.log('tasty but deadly');
+    },
+    overdose: function(){
+      console.log('jim morrison');
     }
   },
   {
@@ -77,7 +86,7 @@ const moves = [
       console.log('fowl!!');
     },
     lifeOLife: function(){
-      console.log('too much chicken');
+      console.log('Des\'ree');
     }
   }
 ];
@@ -114,11 +123,81 @@ function init(){
 
 
 
-    if (humanSelection === 'chicken' && cpuSelection === 'beer') {
-        moves[1].barginBucket();
-    }else{
-      console.log('false');
+
+    if (humanSelection === 'chicken'){
+      switch (cpuSelection) {
+        case 'chicken':
+          moves[1].barginBucket();
+          break;
+        case 'beer':
+          moves[1].perfectCombo();
+          break;
+        case 'mushroom':
+          moves[3].chickenMushroomPie();
+          break;
+        case 'syringe':
+          moves[4].hormoneChicken();
+          break;
+        case 'water':
+          moves[5].soggyChicken();
+      }
+    } else if (humanSelection === 'beer') {
+      switch (cpuSelection) {
+        case 'water':
+          moves[0].needPiss();
+          break;
+        case 'mushroom':
+          moves[3].festival();
+          break;
+        case 'syringe':
+          moves[0].highAsAKite();
+          break;
+        case 'beer':
+          moves[0].theFamousOne();
+          break;
+        case 'fire':
+          moves[0].megaPissed();
+      }
+    }else if (humanSelection === 'fire'){
+      switch (cpuSelection) {
+        case 'water':
+          moves[5].extinguish();
+          break;
+        case 'mushroom':
+          moves[2].burntMushroom();
+          break;
+        case 'syringe':
+          moves[2].toxicFire();
+          break;
+        case 'chicken':
+          moves[0].roastChicken();
+          break;
+        case 'fire':
+          moves[2].gettingHotInEre();
+      }
+    } else if (humanSelection === 'mushroom'){
+      switch (cpuSelection) {
+        case 'water':
+          moves[3].fertileMushroom();
+          break;
+        case 'mushroom':
+          moves[3].magicMushroom();
+          break;
+        case 'syringe':
+          moves[4].posionMushroom();
+      }
+    } else if (humanSelection === 'water') {
+      switch (cpuSelection){
+        case 'syringe':
+          moves[4].posionWater();
+          break;
+        case 'water':
+          moves[5].lifeOLife();
+      }
+    } else {
+      moves[4].overdose();
     }
+    // }
 
 
 
@@ -163,15 +242,15 @@ function init(){
 
 
 
-  // for (var i = 0; i < $('.powerupBox').length; i++) {
-  //   // const randomSelectionOfItems =  items[Math.floor(Math.random()*items.length)];
-  //   // console.log(moves[i].image);
-  //   $('.powerupBox').css('background-image', `../img/${moves[i].image}`);
-  // }
-  // const randomSelectionOfItems = items[Math.floor(Math.random()*items.length)];
-  // console.log(randomSelectionOfItems);
-  // $('.powerupBox').append(randomSelectionOfItems);
-  // console.log(randomSelectionOfItems);
+// for (var i = 0; i < $('.powerupBox').length; i++) {
+//   // const randomSelectionOfItems =  items[Math.floor(Math.random()*items.length)];
+//   // console.log(moves[i].image);
+//   $('.powerupBox').css('background-image', `../img/${moves[i].image}`);
+// }
+// const randomSelectionOfItems = items[Math.floor(Math.random()*items.length)];
+// console.log(randomSelectionOfItems);
+// $('.powerupBox').append(randomSelectionOfItems);
+// console.log(randomSelectionOfItems);
 
 
 
@@ -268,18 +347,18 @@ function init(){
 // ;
 //
 // const fire = ['img/fire.png']
-  // burntMushroom: function(){
-  //   // some kinda thing that effects the power bar
-  //   console.log('disgusting!!');
-  // },
-  // toxicFire: function(){
-  //   // some kinda thing that effects the power bar
-  //   console.log('Gas');
-  // },
-  // gettingHotInEre: function(){
-  //   //   // something that fills both powerbars
-  //   console.log('so take off all your clothes');
-  // }
+// burntMushroom: function(){
+//   // some kinda thing that effects the power bar
+//   console.log('disgusting!!');
+// },
+// toxicFire: function(){
+//   // some kinda thing that effects the power bar
+//   console.log('Gas');
+// },
+// gettingHotInEre: function(){
+//   //   // something that fills both powerbars
+//   console.log('so take off all your clothes');
+// }
 // ;
 //
 // const water = ['img/water.png']
