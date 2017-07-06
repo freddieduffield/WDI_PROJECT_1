@@ -28,6 +28,7 @@
   background-color: #C3B299;
   margin: 0 auto;
   height: 600px;
+  position: absolute;
 }*/
 
 .resetContainer{
@@ -100,7 +101,7 @@ header {
   text-align: center;
   width: 150px;
   height: 150px;
-  background-color: cornsilk;
+  /*background-color: cornsilk;*/
   position: relative;
   top: 50%;
   transform: translateY(-50%);
@@ -124,6 +125,7 @@ header {
   margin: 10px;
   border: 3px solid #C3B299;
   position: relative;
+  overflow: hidden;
 }
 
 .bar {
@@ -142,15 +144,22 @@ transition: width .5s linear;
   color: #C3B299;
   /*margin: 200px;*/
   position: absolute;
+  z-index: 1;
 }
 
-.resetButton{
-  height:80px;
+Button{
+  height:100px;
   width:150px;
   background-color: #FCFAFA;
   color: #C3B299;
   /*margin: 200px;*/
   position: absolute;
+  z-index: 10;
+  left: 42.5%;
+  top: 45%;
+  font-size: 30px;
+  text-align:center;
+
 }
 div.powerupBox{
   cursor: pointer;
@@ -163,8 +172,9 @@ div.powerupBox{
   text-align: center;
   margin: 0 auto;
 }
-
-
 .hidden {
   display: none;
+}
+.message {
+
 }

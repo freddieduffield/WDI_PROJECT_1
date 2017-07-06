@@ -263,7 +263,7 @@ function resetPlayZone(){
 
 
 function repopulatePopulatePowerups(){
-  if (counter === 4){
+  if (counter === counter / 4 ){
     $startGame.show();
     $startGame.text('repopulate don\'t playa hate');
   }
