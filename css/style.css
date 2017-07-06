@@ -23,14 +23,36 @@
   position: relative;
 }
 
-.container {
+/*.container {
   width: 80%;
   background-color: #C3B299;
   margin: 0 auto;
   height: 600px;
+}*/
 
-
+.resetContainer{
+  position: absolute;
+  left: 44%;
+  top: 75%;
+  height: 80px;
+  width: 150px;
+  z-index: 10;
+  /*border: 1px solid black;*/
+  margin: none!important;
 }
+
+.startContainer{
+  position: absolute;
+  left: 42.5%;
+  top: 45%;
+  height: 100px;
+  width: 200px;
+  z-index: 10;
+  /*border: 1px solid black;*/
+  margin: none!important;
+}
+
+
 .powerups{
   margin: 5px;
   position: absolute;
@@ -53,6 +75,7 @@ header {
   margin: 10px;
   display: inline-block;
   background-color: #FCFAFA;
+
 }
 
 .powerupBox {
@@ -108,16 +131,25 @@ background: goldenrod;
 width: 20%;
 height: 14px;
 position: relative;
-
+overflow: hidden;
 transition: width .5s linear;
 }
 
-input{
+.startButton{
   height:100px;
   width:200px;
   background-color: #FCFAFA;
   color: #C3B299;
-  margin: 200px;
+  /*margin: 200px;*/
+  position: absolute;
+}
+
+.resetButton{
+  height:80px;
+  width:150px;
+  background-color: #FCFAFA;
+  color: #C3B299;
+  /*margin: 200px;*/
   position: absolute;
 }
 div.powerupBox{
@@ -125,8 +157,14 @@ div.powerupBox{
 }
 
 .message{
-  height: 800px auto;
-  width: 90%;
   font-weight: bold;
-  z-index: -1; position:relative;
+  z-index: 2;
+  position:absolute;
+  text-align: center;
+  margin: 0 auto;
+}
+
+
+.hidden {
+  display: none;
 }

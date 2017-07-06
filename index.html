@@ -12,27 +12,21 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-  <header></header>
-<div class="message"></div>
+  <div class="">
+    <button class="start-game">Start Game</button>
+    <button class="nextTurn hidden">New Turn</button>
+  </div>
+  <div class="message"></div>
   <div class="container endgame">
-
-
-
+    <button class="resetContainer hidden">Reset
+    </div>
     <div class="playerOne">
       <div class="scores">
-        <!-- <div class="health">
-        <div class="healthBarBox left"></div>
-        <div class="healthBarBox left"></div>
-        <div class="healthBarBox left"></div>
-      </div> -->
       <div class="powerBar left" data-total="100" data-value = "20">
         <div id="humanPower" class="bar"></div>
       </div>
     </div>
-
     <div class="character" id= "character1"></div>
-
     <div class="powerups left">
       <div class="powerupBox playa"></div>
       <div class="powerupBox playa"></div>
@@ -40,25 +34,13 @@
       <div class="powerupBox playa"></div>
     </div>
   </div>
-
-
-
-
   <div class="cpuPlayer">
-
     <div class="scores">
-      <!-- <div class="health">
-      <div class="healthBarBox right"></div>
-      <div class="healthBarBox right"></div>
-      <div class="healthBarBox right"></div>
-    </div> -->
     <div class="powerBar right" data-total="100" data-value = "20">
       <div id="cpuPower" class="bar"></div>
     </div>
   </div>
-
-  <div class="character2"></div>
-
+  <div id="character2"></div>
   <div class="powerups right">
     <div class="powerupBox enemyArray"></div>
     <div class="powerupBox enemyArray"></div>
@@ -66,7 +48,6 @@
     <div class="powerupBox enemyArray"></div>
   </div>
 </div>
-
-</div>
+<div class="endgamemessage"></div>
 </body>
 </html>

@@ -1,448 +1,457 @@
 $(init);
 
-function init(){
+let $startGame              = null;
+let $powerUpContainers      = null;
+let $playerMoves            = null;
+let $computerMoves          = null;
+let $playerMoveContainer    = null;
+let $computerMoveContainer  = null;
+let $displayOutcomeMessage  = null;
+let $hBar                   = null;
+let $effectPlayerPowerBar   = null;
+let $effectComputerPowerBar = null;
+let $nextTurnButton         = null;
+let playerBarWidth          = 20;
+let cpuBarWidth             = 20;
+let computerLife            = 20;
+let playerLife              = 20;
+let counter                 = 0;
 
-  function whatYaSayin(comment){
-    const newDivMessage = $('div');
-    $('.message').prepend(comment);
-    newDivMessage.css('font-size', '100px', 'cursor', 'pointer');
-    $('.powerupBox').hide();
 
-    $('.container').on('click', function(){
-      console.log('clicked');
-      // $('.character').prop('onclick',null).off('click');
-      // $('.powerupBox').show();
-    });
-    // remove text
-    // return to game board
-  }
-  // ITEM OBJECTS ARRAY
-  const moves = [
-    {
-      image: 'beer.png',
-      name: 'beer',
-      needPiss: function(){
-        // hopefully a count down
-        const piss = 'Need a piss!!! move!';
-        whatYaSayin(piss);
-      },
-      theFamousOne: function(){
-        const famous = 'the famous one';
-        increasePower();
-        return whatYaSayin(famous);
-      },
-      highAsAKite: function(){
-        const high = 'High as a mutha-ffin kite... ';
-        increasePower();
-        whatYaSayin(high);
-      },
-      megaPissed: function(){
-        const blindo = 'Friday night... empty stomoch... blindo drunk';
-        increasePower();
-        whatYaSayin(blindo);
-      }
-    },
-    {
-      image: 'chicken.png',
-      name: 'chicken',
-      barginBucket: function(){
-        const bargin = 'finger lick\' food';
-        increasePower();
-        whatYaSayin(bargin);
-      },
-      roastChicken: function(){
-        const roast ='roastin\'';
-        whatYaSayin(roast)
-      },
-      perfectCombo: function(){
-        const kfc ='Eden\'s cottage .. PFC .. Chicken cottage';
-        increasePower();
-        whatYaSayin(kfc);
-      }
-    },
-    {
-      image: 'fire.png',
-      name: 'fire',
-      burntMushroom: function(){
-        const grees = 'burnt mushroom greasy spoon!!';
-        whatYaSayin(grees);
-      },
-      toxicFire: function(){
-        const toxic = 'toxic fire!!';
-        whatYaSayin(toxic);
-      },
-      gettingHotInEre: function(){
-        const get = 'Its getting hot in ere ! so take off all your clothes';
-        increasePower();
-        whatYaSayin(get);
-      }
-    },
-    {
-      image: 'mushroom.png',
-      name: 'mushroom',
-      fertileMushroom: function() {
-        const fertile = 'Fertile mushroom';
-        increasePower();
-        whatYaSayin(fertile);
-      },
-      chickenMushroomPie: function () {
-        const pukka = 'chicken and mushroom pie .. pukka';
-        increasePower();
-        whatYaSayin();
-      },
-      magicMushroom: function(){
-        const magic = 'trippin\' balls';
-        increasePower();
-        whatYaSayin(magic);
-      },
-      festival: function(){
-        const shroom = 'shroom hop cocktail';
-        increasePower();
-        whatYaSayin(shroom);
-      }
-    },
-    {
-      image: 'syringe.png',
-      name: 'syringe',
-      posionMushroom: function(){
-        const posion ='gastrointestinal discomfort to death';
-        whatYaSayin(posion);
-      },
-      posionWater: function(){
-        const spike ='spiking the water supply';
-        whatYaSayin(spike);
-      },
-      hormoneChicken: function(){
-        const mone ='tasty but deadly';
-        whatYaSayin(mone);
-      },
-      overdose: function(){
-        const od ='jim morrison';
-        whatYaSayin(od);
-        increasePower();
-      }
-    },
-    {
-      image: 'water.png',
-      name: 'water',
-      extinguish: function(){
-        const waterworks = 'lights out children';
-        whatYaSayin(waterworks);
-      },
-      soggyChicken: function(){
-        const soggy = 'soggy chicke - fowl!!';
-        whatYaSayin(soggy);
-      },
-      lifeOLife: function(){
-        const life = 'life o life o liiiife';
-        whatYaSayin(life);
-        increasePower();
-      }
-    }
-  ];
+function init() {
+  $startGame             = $('.start-game');
+  $powerUpContainers     = $('.powerupBox');
+  $playerMoves           = $('.playa');
+  $computerMoves         = $('.enemyArray');
+  $playerMoveContainer   = $('#character1');
+  $computerMoveContainer = $('#character2');
+  $displayOutcomeMessage = $('div');
+  $hBar                  = $('.powerBar');
+  $effectPlayerPowerBar  = $('#humanPower');
+  $effectComputerPowerBar= $('#cpuPower');
+  $nextTurnButton        = $('.nextTurn');
 
 
 
-  // INCREASE POWER BAR function
-  const hBar      = $('.powerBar');
-  const bar       = $('.bar');
-  const manPower  = $('#humanPower');
-  const cpuPower  = $('#cpuPower');
 
-  function increasePower(){
-    var total = hBar.data('total');
-    var value = hBar.data('value');
-    var power = 10;
-    var newValue = +value + +power  ;
-    var barWidth = (newValue / total) * 100;
-    hBar.data('value', newValue);
-    setTimeout(function(){
-      manPower.css('width', barWidth + '%');
-    }, 500);
-    console.log(newValue, power, barWidth);
-    if(barWidth === 100){
-      $('.character').prepend('You win muthafucker');
-      newDivMessage.css('font-size', '100px');
-    }
-  }
-
-  function increasePower(){
-    var total = hBar.data('total');
-    var value = hBar.data('value');
-    var power = 10;
-    var newValue = +value + +power  ;
-    var barWidth = (newValue / total) * 100;
-    hBar.data('value', newValue);
-    setTimeout(function(){
-      manPower.css('width', barWidth + '%');
-    }, 500);
-    console.log(newValue, power, barWidth);
-    if(barWidth === 100){
-      $('.character').prepend('You win muthafucker');
-      newDivMessage.css('font-size', '100px');
-    }
-  }
-
-  // START BUTTON
-  function createStartButton(){
-    const $input = $('<input type="button" value="START" />');
-    $input.appendTo($('.endgame'));
-    $input.on('click', function(){
-      itemDistributor();
-      $input.remove();
-    });
-  }
-  createStartButton();
-  // RANDOM ITEM DISTRIBUTOR
-  function itemDistributor(){
-    $.each($('.powerupBox'), function(index, element) {
-      const randomMove = moves[Math.floor(Math.random()* moves.length)];
-      $(element).css('background', `url(img/${randomMove.image})`).attr('id', `${randomMove.name}`);
-    });
-  }
-  // LISTENING EVENT
-  $('.powerupBox.playa').on('click', function(e) {
-    const $enemyArray = $('.enemyArray').toArray();
-    const cpuMove = $enemyArray[Math.floor(Math.random()* $enemyArray.length)];
-    $('.character2').append(cpuMove).clone();
-    $('.character').append(e.target).clone();
-
-    // COMPARISION IF ELSE STATEMENT
-    const humanSelection = $('div.character > div')[0].id;
-    const cpuSelection = $('div.character2 > div')[0].id;
-    if (humanSelection === 'chicken'){
-      switch (cpuSelection) {
-        case 'chicken':
-        moves[1].barginBucket();
-        break;
-        case 'beer':
-        moves[1].perfectCombo();
-        break;
-        case 'mushroom':
-        moves[3].chickenMushroomPie();
-        break;
-        case 'syringe':
-        moves[4].hormoneChicken();
-        break;
-        case 'water':
-        moves[5].soggyChicken();
-      }
-    } else if (humanSelection === 'beer') {
-      switch (cpuSelection) {
-        case 'water':
-        moves[0].needPiss();
-        break;
-        case 'mushroom':
-        moves[3].festival();
-        break;
-        case 'syringe':
-        moves[0].highAsAKite();
-        break;
-        case 'beer':
-        moves[0].theFamousOne();
-        break;
-        case 'fire':
-        moves[0].megaPissed();
-      }
-    }else if (humanSelection === 'fire'){
-      switch (cpuSelection) {
-        case 'water':
-        moves[5].extinguish();
-        break;
-        case 'mushroom':
-        moves[2].burntMushroom();
-        break;
-        case 'syringe':
-        moves[2].toxicFire();
-        break;
-        case 'chicken':
-        moves[1].roastChicken();
-        break;
-        case 'fire':
-        moves[2].gettingHotInEre();
-      }
-    } else if (humanSelection === 'mushroom'){
-      switch (cpuSelection) {
-        case 'water':
-        moves[3].fertileMushroom();
-        break;
-        case 'mushroom':
-        moves[3].magicMushroom();
-        break;
-        case 'syringe':
-        moves[4].posionMushroom();
-      }
-    } else if (humanSelection === 'water') {
-      switch (cpuSelection){
-        case 'syringe':
-        moves[4].posionWater();
-        break;
-        case 'water':
-        moves[5].lifeOLife();
-      }
-    } else {
-      moves[4].overdose();
-    }
-
-
-
-  });
+  $startGame.on('click', play);
 }
 
-//
+
+function play() {
+  distributeItems();
+  $startGame.hide();
+}
+
+function distributeItems() {
+  $.each($powerUpContainers, (index, element) => {
+    const randomMove = moves[Math.floor(Math.random()* moves.length)];
+    $(element).css('background', `url(img/${randomMove.image})`).attr('id', `${randomMove.name}`).attr('data-image', `${randomMove.image}`);
+  });
+
+  handleClickEvents();
+}
+
+function handleClickEvents() {
+  $playerMoves.one('click', makeMoves);
+}
+
+function makeMoves() {
+  const playerMove   = $(this).clone();
+  const randomComputerMove = $computerMoves[Math.floor(Math.random()* $computerMoves.length)];
+  const computerMove = $(randomComputerMove).clone();
+  counter = counter +1;
+  displayMoves(playerMove, computerMove);
+  hideUsedMoves($(this), $(randomComputerMove));
+  compareMoves(playerMove, computerMove);
+  checkForWin();
+
+}
+
+function displayMoves(playerMove, computerMove) {
+  playerMove.appendTo('#character1');
+  computerMove.appendTo('#character2');
+
+}
+
+function hideUsedMoves(player, computer) {
+  player.css('background', 'none');
+  computer.css('background', 'none');
+}
+
+function compareMoves(player, computer) {
+  const playerMove   = player.attr('id');
+  const computerMove = computer.attr('id');
+
+  if (playerMove === 'chicken'){
+    switch (computerMove) {
+      case 'chicken':
+        moves[1].barginBucket();
+        break;
+      case 'beer':
+        moves[1].perfectCombo();
+        break;
+      case 'mushroom':
+        moves[3].chickenMushroomPie();
+        break;
+      case 'syringe':
+        moves[4].hormoneChicken();
+        break;
+      case 'water':
+        moves[5].soggyChicken();
+        break;
+      default:
+        loser();
+    }
+  } else if (playerMove === 'beer') {
+    switch (computerMove) {
+      case 'water':
+        moves[0].needPiss();
+        break;
+      case 'mushroom':
+        moves[3].festival();
+        break;
+      case 'syringe':
+        moves[0].highAsAKite();
+        break;
+      case 'beer':
+        moves[0].theFamousOne();
+        break;
+      case 'fire':
+        moves[0].megaPissed();
+        break;
+      default:
+        loser();
+    }
+  }else if (playerMove === 'fire'){
+    switch (computerMove) {
+      case 'water':
+      moves[5].extinguish();
+      break;
+      case 'mushroom':
+      moves[2].burntMushroom();
+      break;
+      case 'syringe':
+      moves[2].toxicFire();
+      break;
+      case 'chicken':
+      moves[1].roastChicken();
+      break;
+      case 'fire':
+      moves[2].gettingHotInEre();
+      break;
+      default:
+      loser();
+    }
+  } else if (playerMove === 'mushroom'){
+    switch (computerMove) {
+      case 'water':
+      moves[3].fertileMushroom();
+      break;
+      case 'mushroom':
+      moves[3].magicMushroom();
+      break;
+      case 'syringe':
+      moves[4].posionMushroom();
+      break;
+      case 'fire':
+      moves[2].burntMushroom();
+      break;
+      case 'beer':
+      moves[3].festival();
+      break;
+      default:
+      loser();
+    }
+  } else if (playerMove === 'water') {
+    switch (computerMove){
+      case 'syringe':
+      moves[4].posionWater();
+      break;
+      case 'water':
+      moves[5].lifeOLife();
+      break;
+      case 'chicken':
+      moves[5].soggyChicken();
+      break;
+      case 'fire':
+      moves[5].extinguish();
+      break;
+      default:
+      loser();
+    }
+  } else if (playerMove === 'syringe'){
+    switch (computerMove) {
+      case 'water':
+        moves[4].posionWater();
+        break;
+      case 'mushroom':
+        moves[4].posionMushroom();
+        break;
+      case 'syringe':
+        moves[4].overdose();
+        break;
+      case 'fire':
+        moves[2].toxicFire();
+        break;
+      case 'chicken':
+        moves[4].hormoneChicken();
+        break;
+      default:
+        loser();
+    }
+  } else {
+    moves[4].overdose();
+  }
+}
+
+function displayMessage(comment) {
+  $('.message').prepend(comment);
+  $displayOutcomeMessage.css({
+    'font-size': '70px'
+    // 'pointer': 'cursor'
+  });
+  $computerMoveContainer.css('background', 'none');
+}
+
+function healthBar (playerLife, computerLife){
+  const total = $hBar.data('total');
+  const value = $hBar.data('value');
+  const newCpuValue    = value + computerLife;
+  const newPlayerValue = value + playerLife;
+  playerBarWidth = (newPlayerValue / total) * 100;
+  cpuBarWidth    = (newCpuValue / total) * 100;
+  $hBar.data('value', newPlayerValue, newCpuValue);
+  setTimeout(function(){
+    $effectPlayerPowerBar.css('width', playerBarWidth + '%');
+    $effectComputerPowerBar.css('width', cpuBarWidth + '%');
+  }, 500);
+  checkForWin(cpuBarWidth, playerBarWidth);
+}
 
 
-// var cardElement = document.createElement('img');
-// cardElement.setAttribute('src', 'images/back.png');
-// cardElement.setAttribute('data-id', i);
-//
-// cardElement.addEventListener('click', flipCard);
-// document.getElementById('game-board').appendChild(cardElement);
+
+function checkForWin(cpuBarWidth, playerBarWidth) {
+  if (playerBarWidth >= 100 || cpuBarWidth >= 100) {
+    $('.endgamemessage').text('You Win muthafucker');
+    console.log('win');
+  } else if (playerBarWidth <= 0 || cpuBarWidth <= 0){
+    $('.endgamemessage').text('lost ya edge');
+    console.log('loose');
+  }else{
+    $('.endgamemessage').text('onwards and upwards!');
+    console.log('keep going');
+    nextTurn();
+  }
+}
+
+function nextTurn(){
+  $nextTurnButton.removeClass('hidden');
+  $nextTurnButton.on('click', resetPlayZone);
+}
+
+function resetPlayZone(){
+  $('.message').text('');
+  $('.endgamemessage').text('');
+  $('div.character').remove();
+  $computerMoveContainer.empty();
+  $('<div>', { id: 'character1', 'class': 'character'}).appendTo('.playerOne');
+  $nextTurnButton.addClass('hidden');
+  repopulatePopulatePowerups();
+}
 
 
 
+function repopulatePopulatePowerups(){
+  if (counter === 4){
+    $startGame.show();
+    $startGame.text('repopulate don\'t playa hate');
+  }
+}
 
 
 
-// for (var i = 0; i < $('.powerupBox').length; i++) {
-//   // const randomSelectionOfItems =  items[Math.floor(Math.random()*items.length)];
-//   // console.log(moves[i].image);
-//   $('.powerupBox').css('background-image', `../img/${moves[i].image}`);
-// }
-// const randomSelectionOfItems = items[Math.floor(Math.random()*items.length)];
-// console.log(randomSelectionOfItems);
-// $('.powerupBox').append(randomSelectionOfItems);
-// console.log(randomSelectionOfItems);
+function loser(){
+    const newDivMessage = $('div');
+    $('.message').empty();
+    $('.message').prepend('YOU NEED TO BE CAREFUL');
+    newDivMessage.css({
+      'font-size': '70px',
+      'pointer': 'cursor'});
+    healthBar(-20, 0);
+}
 
 
 
-// $('.powerupBox').on('click', function (){});
+  const moves = [
+  {
+    name: 'beer',
+    numberInArray: 0,
+    image: 'beer.png',
+    needPiss: function(){
+      // hopefully a count down
+      const piss = 'Need a piss!!! move!';
+      displayMessage(piss);
+      healthBar(-10, -10);
+    },
+    theFamousOne: function(){
+      const famous = 'the famous one';
+      displayMessage(famous);
+      healthBar(10, -10);
+      // decreasePowerCpu();
+      // increasePower();
+    },
+    highAsAKite: function(){
+      const high = 'High as a mutha-ffin kite... ';
+      displayMessage(high);
+      healthBar(10, -10);
+      // decreasePowerCpu();
+      // increasePower();
+    },
+    megaPissed: function(){
+      const blindo = 'Friday night... empty stomoch... blindo drunk';
+      displayMessage(blindo);
+      healthBar(-10, -10);
+      // decreasePowerCpu();
+      // increasePower();
+    }
+  },
+  {
+    name: 'chicken',
+    numberInArray: 1,
+    image: 'chicken.png',
+    barginBucket: function(){
+      const bargin = 'finger lick\' food';
+      displayMessage(bargin);
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      // decreasePowerCpu();
+      // increasePower();
+    },
+    roastChicken: function(){
+      const roast ='roastin\'';
+      displayMessage(roast);
+      // decreasePower();
+      // increasePowerCpu();
+    },
+    perfectCombo: function(){
+      const kfc ='Eden\'s cottage .. PFC .. Chicken cottage';
+      displayMessage(kfc);
+      // increasePower();
+      // increasePowerCpu();
+    }
+  },
+  {
+    name: 'fire',
+    numberInArray: 2,
+    image: 'fire.png',
+    burntMushroom: function(){
+      const grees = 'burnt mushroom greasy spoon!!';
+      displayMessage(grees);
+      // decreasePower();
+      // increasePowerCpu();
+    },
+    toxicFire: function(){
+      const toxic = 'toxic fire!!';
+      displayMessage(toxic);
+      // decreasePower();
+      // increasePowerCpu();
+    },
+    gettingHotInEre: function(){
+      const get = 'Its getting hot in ere ! so take off all your clothes';
+      displayMessage(get);
+      // increasePower();
+    }
+  },
+  {
+    name: 'mushroom',
+    numberInArray: 3,
+    image: 'mushroom.png',
+    fertileMushroom: function() {
+      const fertile = 'Fertile mushroom';
+      displayMessage(fertile);
+      healthBar(15, 10);
+      // increasePower();
+    },
+    chickenMushroomPie: function () {
+      const pukka = 'chicken and mushroom pie .. pukka';
+      displayMessage(pukka);
+      healthBar(15, -5);
+      // increasePower();
+      // decreasePowerCpu();
+    },
+    magicMushroom: function(){
+      const magic = 'trippin\' balls';
+      displayMessage(magic);
+      healthBar(30, 30);
+      // increasePowerCpu();
+      // increasePower();
+    },
+    festival: function(){
+      const shroom = 'shroom hop cocktail';
+      displayMessage(shroom);
+      healthBar(15, 15);
+      // increasePower();
+      // increasePowerCpu();
+    }
+  },
+  {
+    name: 'syringe',
+    numberInArray: 4,
+    image: 'syringe.png',
 
-// An object containing items
-// a random generator of objects
-// a click event generates a random selector of computers object
-// the 2 objects in play are evaluated
-// the evaluation effects the life and power bars
-// the game ends when one player life bar(-3) is empty or the other players power bar(3) is full
-
-// winConditionsOnePlayer
-// fireWins
-// if (mushroom vs fire )
-// return burnt mushroom
-//
-// if (fire 5 vs syringe)
-// return toxic fire
-//
-// // syringeWins
-// if (syringe 10 vs mushroom)
-// return Posion mushroom
-//
-// if (syringe vs water)
-// return posioned water
-//
-// if (syringe vs chicken)
-// return hormone chicken
-//
-// // mushroomWins
-// if (mushroom vs water)
-// return fertile mushroom
-//
-// if (beer vs mushrooom)
-// return bad combo
-//
-// // waterWins
-// if (fire vs water)
-// return extinguish
-//
-// if (water vs chicken)
-// return soggy chicken
-//
-// // chickenWins
-// if (fire vs chicken)
-// return roast chicken
-//
-// if (chicken vs beer)
-// return perfect combo
-//
-//
-// // winConditionsBoth
-// if (chicken vs mushroom)
-// return chicken and mushroom pie
-// each player gains a life
-//
-// if (fire === fire)
-// return gettingHotInEre
-// power of attacks double up
-//
-// if (water === water)
-// return life 'o' life 'o' life
-// mega power bar up for both people
-//
-// if (beer vs Syringe)
-// return High as a Kite
-//
-// // looseConditionsBoth
-// if (mushroom === mushroom)
-// return Magic Mushroom
-// remove one life from both computer and human
-//
-// if (beer vs fire)
-// return mega pissed
-// power up both player but die the next round
-//
-// if (water vs beer)
-// return need a piss
-// complete piss 10 second interval timer
-//
-// if (chicken === chicken)
-// return Bargin Bucket
-// both loose
-
-//
-
-
-// // item Objects
-// const mushroom = ['img/mushroom.png']
-
-// ;
-//
-// const fire = ['img/fire.png']
-// burntMushroom: function(){
-//   // some kinda thing that effects the power bar
-//   console.log('disgusting!!');
-// },
-// toxicFire: function(){
-//   // some kinda thing that effects the power bar
-//   console.log('Gas');
-// },
-// gettingHotInEre: function(){
-//   //   // something that fills both powerbars
-//   console.log('so take off all your clothes');
-// }
-// ;
-//
-// const water = ['img/water.png']
-
-// ;
-// const chicken = ['img/chicken.png']
-//   // roastChicken: function(){
-//   //   console.log('roastin\'');
-//   // },
-//   // perfectCombo: function(){
-//   //   console.log('Eden\'s cottage');
-//   // },
-//   // barginBucket: function(){
-//   //   console.log('too much chicken');
-//   // }
-// ;
-//
-// const beer = ['img/beer.png']
-
-// ;
-//
-// // const syringe = ['img/syringe.png']
-//
-
-// ;
+    posionMushroom: function(){
+      const posion ='gastrointestinal discomfort to death';
+      displayMessage(posion);
+      healthBar(-10, 10);
+      // decreasePower();
+      // increasePowerCpu();
+    },
+    posionWater: function(){
+      const spike ='spiking the water supply';
+      displayMessage(spike);
+      healthBar(-15, -10);
+      // decreasePower();
+      // increasePowerCpu();
+    },
+    hormoneChicken: function(){
+      const mone ='tasty but deadly';
+      displayMessage(mone);
+      healthBar(-10, 10);
+      // decreasePower();
+      // increasePowerCpu();
+    },
+    overdose: function(){
+      const od ='jim morrison';
+      displayMessage(od);
+      healthBar(30, 30);
+      // increasePower();
+      // decreasePowerCpu();
+    }
+  },
+  {
+    name: 'water',
+    numberInArray: 5,
+    image: 'water.png',
+    extinguish: function(){
+      const waterworks = 'lights out children';
+      displayMessage(waterworks);
+      healthBar(-15, 0);
+      // decreasePower();
+      // increasePowerCpu();
+    },
+    soggyChicken: function(){
+      const soggy = 'soggy chicke - fowl!!';
+      displayMessage(soggy);
+      healthBar(-20, 10);
+      // decreasePower();
+      // decreasePowerCpu();
+    },
+    lifeOLife: function(){
+      const life = 'life o life o liiiife';
+      displayMessage(life);
+      healthBar(100, 100);
+      // increasePower();
+      // increasePowerCpu();
+    }
+  }
+];
