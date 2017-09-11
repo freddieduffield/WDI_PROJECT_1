@@ -6,30 +6,38 @@
   background-size: contain !important;
 }
 
+body {
+  font-family: 'Alegreya Sans SC', sans-serif;
+}
+
+main {
+  margin: 0 auto;
+  width: 1000px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 125px;
+  margin: 10px;
+  font-weight: 900;
+  letter-spacing: 14px;
+}
+
 .playerOne {
+  position: relative;
   float: left;
-  width: 48%;
+  width: 50%;
   height: 600px;
   background-color: #C1DFF0;
-  border: 30px 20px 5px;
-  position: relative;
 }
 
 .cpuPlayer {
+  position: relative;
   float: right;
-  width: 48%;
+  width: 50%;
   height: 600px;
   background-color: #DBEBC0;
-  position: relative;
 }
-
-/*.container {
-  width: 80%;
-  background-color: #C3B299;
-  margin: 0 auto;
-  height: 600px;
-  position: absolute;
-}*/
 
 .resetContainer{
   position: absolute;
@@ -38,7 +46,6 @@
   height: 80px;
   width: 150px;
   z-index: 10;
-  /*border: 1px solid black;*/
   margin: none!important;
 }
 
@@ -49,17 +56,14 @@
   height: 100px;
   width: 200px;
   z-index: 10;
-  /*border: 1px solid black;*/
   margin: none!important;
 }
 
-
 .powerups{
-  margin: 5px;
   position: absolute;
-  display:block;
   bottom: 0;
-  width: 550px;
+  left: 10%;
+  margin: 5px;
   text-align: center;
 }
 
@@ -88,14 +92,6 @@ header {
   padding: 20px;
 }
 
-.right {
-  float: right;
-}
-
-.left {
-  float:left;
-}
-
 .character{
   margin: 0 auto;
   text-align: center;
@@ -112,69 +108,51 @@ header {
   text-align: center;
   width: 150px;
   height: 150px;
-  background-color: goldenrod;
   position: relative;
   top: 50%;
   transform: translateY(-50%);
 }
 
 .powerBar{
-
   width: 300px;
   height: 20px;
-  margin: 10px;
+  margin: 10px auto;
   border: 3px solid #C3B299;
   position: relative;
   overflow: hidden;
 }
 
 .bar {
-background: goldenrod;
-width: 20%;
-height: 14px;
-position: relative;
-overflow: hidden;
-transition: width .5s linear;
+  text-align: center;
+  background: goldenrod;
+  width: 20%;
+  height: 14px;
+  position: relative;
+  overflow: hidden;
+  transition: width .5s linear;
 }
 
-.startButton{
-  height:100px;
-  width:200px;
-  background-color: #FCFAFA;
-  color: #C3B299;
-  /*margin: 200px;*/
-  position: absolute;
-  z-index: 1;
+button{
+  width: 1000px;
+  height: 70px;
+  font-family: 'Alegreya Sans SC', sans-serif;
+  font-weight: 600;
+  font-size: 40px;
+  background: #EEE;
+  color: #333;
+  border: none;
 }
 
-Button{
-  height:100px;
-  width:150px;
-  background-color: #FCFAFA;
-  color: #C3B299;
-  /*margin: 200px;*/
-  position: absolute;
-  z-index: 10;
-  left: 42.5%;
-  top: 45%;
-  font-size: 30px;
-  text-align:center;
-
-}
 div.powerupBox{
   cursor: pointer;
 }
 
 .message{
-  font-weight: bold;
-  z-index: 2;
-  position:absolute;
-  text-align: center;
+  width: 1000px;
+  height: 70px;
+  background: #EEE;
   margin: 0 auto;
-}
-.hidden {
-  display: none;
-}
-.message {
-
+  text-align: center;
+  color: #333;
+  font-size: 60px;
 }

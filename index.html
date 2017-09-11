@@ -8,46 +8,48 @@
   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
   crossorigin="anonymous"></script>
   <script src="js/app.js" charset="utf-8"></script>
+  <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:400,500,700,900" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div class="">
-    <button class="start-game startButton">Start Game</button>
-    <button class="nextTurn hidden">More</button>
-  </div>
+  <h1>Eden's Cottage</h1>
   <div class="message"></div>
-  <div class="container endgame">
-    <button class="resetContainer hidden">Reset
-    </div>
+  <main>
     <div class="playerOne">
       <div class="scores">
-      <div class="powerBar left" data-total="100" data-value = "20">
-        <div id="humanPower" class="bar"></div>
+        <div class="powerBar left" data-total="100" data-value = "20">
+          <div id="humanPower" class="bar"></div>
+        </div>
+      </div>
+      <div class="character" id= "character1"></div>
+      <div class="powerups left">
+        <div class="powerupBox playa"></div>
+        <div class="powerupBox playa"></div>
+        <div class="powerupBox playa"></div>
+        <div class="powerupBox playa"></div>
       </div>
     </div>
-    <div class="character" id= "character1"></div>
-    <div class="powerups left">
-      <div class="powerupBox playa"></div>
-      <div class="powerupBox playa"></div>
-      <div class="powerupBox playa"></div>
-      <div class="powerupBox playa"></div>
+    <div class="cpuPlayer">
+      <div class="scores">
+        <div class="powerBar right" data-total="100" data-value = "20">
+          <div id="cpuPower" class="bar"></div>
+        </div>
+      </div>
+      <div class="character2" id="character2"></div>
+      <div class="powerups right">
+        <div class="powerupBox enemyArray"></div>
+        <div class="powerupBox enemyArray"></div>
+        <div class="powerupBox enemyArray"></div>
+        <div class="powerupBox enemyArray"></div>
+      </div>
     </div>
-  </div>
-  <div class="cpuPlayer">
-    <div class="scores">
-    <div class="powerBar right" data-total="100" data-value = "20">
-      <div id="cpuPower" class="bar"></div>
+    <div class="">
+      <button class="start-game startButton">Start Game</button>
+      <button class="nextTurn hidden">Next Turn</button>
     </div>
-  </div>
-  <div class="character2" id="character2"></div>
-  <div class="powerups right">
-    <div class="powerupBox enemyArray"></div>
-    <div class="powerupBox enemyArray"></div>
-    <div class="powerupBox enemyArray"></div>
-    <div class="powerupBox enemyArray"></div>
-  </div>
-</div>
-<div class="endgamemessage"></div>
+  </main>
+  <div class="endgamemessage"></div>
 </body>
 </html>

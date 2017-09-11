@@ -31,16 +31,16 @@ function init() {
   $effectComputerPowerBar= $('#cpuPower');
   $nextTurnButton        = $('.nextTurn');
 
-
-
-
   $startGame.on('click', play);
+  $('.nextTurn').hide();
 }
 
 
 function play() {
+  $('#character1, #character2').children().remove();
   distributeItems();
   $startGame.hide();
+  console.log($computerMoveContainer);
 }
 
 function distributeItems() {
@@ -60,17 +60,16 @@ function makeMoves() {
   const playerMove   = $(this).clone();
   const randomComputerMove = $computerMoves[Math.floor(Math.random()* $computerMoves.length)];
   const computerMove = $(randomComputerMove).clone();
-  counter = counter +1;
+  counter++;
   displayMoves(playerMove, computerMove);
   hideUsedMoves($(this), $(randomComputerMove));
   compareMoves(playerMove, computerMove);
-  checkForWin();
-
+  repopulatePopulatePowerups();
 }
 
 function displayMoves(playerMove, computerMove) {
-  playerMove.appendTo('#character1');
-  computerMove.appendTo('#character2');
+  playerMove.appendTo('#character1').addClass('animated zoomIn').css();
+  computerMove.appendTo('#character2').addClass('animated zoomIn').css();
 
 }
 
@@ -126,59 +125,59 @@ function compareMoves(player, computer) {
   }else if (playerMove === 'fire'){
     switch (computerMove) {
       case 'water':
-      moves[5].extinguish();
-      break;
+        moves[5].extinguish();
+        break;
       case 'mushroom':
-      moves[2].burntMushroom();
-      break;
+        moves[2].burntMushroom();
+        break;
       case 'syringe':
-      moves[2].toxicFire();
-      break;
+        moves[2].toxicFire();
+        break;
       case 'chicken':
-      moves[1].roastChicken();
-      break;
+        moves[1].roastChicken();
+        break;
       case 'fire':
-      moves[2].gettingHotInEre();
-      break;
+        moves[2].gettingHotInEre();
+        break;
       default:
-      loser();
+        loser();
     }
   } else if (playerMove === 'mushroom'){
     switch (computerMove) {
       case 'water':
-      moves[3].fertileMushroom();
-      break;
+        moves[3].fertileMushroom();
+        break;
       case 'mushroom':
-      moves[3].magicMushroom();
-      break;
+        moves[3].magicMushroom();
+        break;
       case 'syringe':
-      moves[4].posionMushroom();
-      break;
+        moves[4].posionMushroom();
+        break;
       case 'fire':
-      moves[2].burntMushroom();
-      break;
+        moves[2].burntMushroom();
+        break;
       case 'beer':
-      moves[3].festival();
-      break;
+        moves[3].festival();
+        break;
       default:
-      loser();
+        loser();
     }
   } else if (playerMove === 'water') {
     switch (computerMove){
       case 'syringe':
-      moves[4].posionWater();
-      break;
+        moves[4].posionWater();
+        break;
       case 'water':
-      moves[5].lifeOLife();
-      break;
+        moves[5].lifeOLife();
+        break;
       case 'chicken':
-      moves[5].soggyChicken();
-      break;
+        moves[5].soggyChicken();
+        break;
       case 'fire':
-      moves[5].extinguish();
-      break;
+        moves[5].extinguish();
+        break;
       default:
-      loser();
+        loser();
     }
   } else if (playerMove === 'syringe'){
     switch (computerMove) {
@@ -209,7 +208,6 @@ function displayMessage(comment) {
   $('.message').prepend(comment);
   $displayOutcomeMessage.css({
     'font-size': '70px'
-    // 'pointer': 'cursor'
   });
   $computerMoveContainer.css('background', 'none');
 }
@@ -222,31 +220,36 @@ function healthBar (playerLife, computerLife){
   playerBarWidth = (newPlayerValue / total) * 100;
   cpuBarWidth    = (newCpuValue / total) * 100;
   $hBar.data('value', newPlayerValue, newCpuValue);
+  checkForWin(cpuBarWidth, playerBarWidth);
   setTimeout(function(){
     $effectPlayerPowerBar.css('width', playerBarWidth + '%');
     $effectComputerPowerBar.css('width', cpuBarWidth + '%');
   }, 500);
-  checkForWin(cpuBarWidth, playerBarWidth);
 }
 
-
-
-function checkForWin(cpuBarWidth, playerBarWidth) {
-  if (playerBarWidth >= 100 || cpuBarWidth >= 100) {
-    $('.endgamemessage').text('You Win muthafucker');
-    console.log('win');
-  } else if (playerBarWidth <= 0 || cpuBarWidth <= 0){
-    $('.endgamemessage').text('lost ya edge');
-    console.log('loose');
+function checkForWin(cpuBarWidth, playerBarWidth){
+  if (cpuBarWidth <= 0 || playerBarWidth >= 100) {
+    const message = 'you win!';
+    gameOver(message);
+  } else if (playerBarWidth <= 0 || cpuBarWidth >= 100){
+    const message = 'you lose!';
+    gameOver(message);
   }else{
-    $('.endgamemessage').text('onwards and upwards!');
-    console.log('keep going');
     nextTurn();
   }
 }
 
+function gameOver(message) {
+  $('#character1, #character2').children().remove();
+  $('.message').text(message);
+
+  setTimeout(function() {
+    location.reload();
+  }, 1000);
+}
+
 function nextTurn(){
-  $nextTurnButton.removeClass('hidden');
+  $nextTurnButton.show();
   $nextTurnButton.on('click', resetPlayZone);
 }
 
@@ -256,34 +259,31 @@ function resetPlayZone(){
   $('div.character').remove();
   $computerMoveContainer.empty();
   $('<div>', { id: 'character1', 'class': 'character'}).appendTo('.playerOne');
-  $nextTurnButton.addClass('hidden');
   repopulatePopulatePowerups();
 }
 
-
-
 function repopulatePopulatePowerups(){
-  if (counter === counter / 4 ){
+  if (counter % 4 === 0){
+    $('.nextTurn').hide();
     $startGame.show();
-    $startGame.text('repopulate don\'t playa hate');
+    $startGame.text('looks like you need some more powerups');
+  } else {
+    $('.nextTurn').show();
   }
 }
 
-
-
 function loser(){
-    const newDivMessage = $('div');
-    $('.message').empty();
-    $('.message').prepend('YOU NEED TO BE CAREFUL');
-    newDivMessage.css({
-      'font-size': '70px',
-      'pointer': 'cursor'});
-    healthBar(-20, 0);
+  const newDivMessage = $('div');
+  $('.message').empty();
+  $('.message').prepend('YOU NEED TO BE CAREFUL');
+  newDivMessage.css({
+    'font-size': '70px',
+    'pointer': 'cursor'
+  });
+  healthBar(-20, 0);
 }
 
-
-
-  const moves = [
+const moves = [
   {
     name: 'beer',
     numberInArray: 0,

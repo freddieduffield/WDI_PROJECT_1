@@ -18,7 +18,7 @@ function init(){
       // $('<div>', {'class': 'powerupBox playa'}).appendTo('.powerups');
       if ($('.powerups').children().length === 0 ) {
 
-        for (var i = 0; i < 4; i++) {
+        for (var i = 0; i  < 4; i++) {
           $('<div>', {'class': 'powerupBox'}).appendTo('.powerups');
         }
         $('div.left > div').addClass('playa');
